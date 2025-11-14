@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "engines": {
-    "node": ">=23.6.1",
+    "node": ">=22.20.0",
     "pnpm": ">=10.0.0"
   },
   "files": [

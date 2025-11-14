@@ -1,4 +1,4 @@
-# <%= readmeName %>: Basics
+# Astro Starter: Basics
 
 ```sh
 pnpm create astro@latest -- --template basics
