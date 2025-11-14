@@ -18,7 +18,7 @@ pnpm i -g yo
 Install the generator:
 
 ```bash
-pnpm i -g generator-astro-starter
+pnpm i -g generator-astro-starter-kit
 ```
 
 ## Usage
@@ -26,13 +26,13 @@ pnpm i -g generator-astro-starter
 Create a new Astro project:
 
 ```bash
-yo astro-starter
+yo astro-starter-kit
 ```
 
 Then navigate to your project and start developing:
 
 ```bash
-cd your-project-name
+cd astro-starter-kit
 pnpm install
 pnpm dev
 ```
