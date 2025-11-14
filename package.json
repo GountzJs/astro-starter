@@ -1,7 +1,8 @@
 {
   "name": "generator-astro-starter",
   "version": "0.1.0",
-  "description": "",
+  "description": "A scaffold for Astro projects",
+  "main": "app/index.js",
   "engines": {
     "node": ">=22.20.0",
     "pnpm": ">=10.0.0"
@@ -10,9 +11,21 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator",
+    "astro",
+    "scaffold",
+    "boilerplate",
+    "eslint",
+    "prettier",
+    "tailwind",
+    "pnpm"
   ],
   "dependencies": {
     "yeoman-generator": "1.1.1"
+  },
+  "packageManager": "pnpm@10.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GountzJs/astro-starter.git"
   }
 }
