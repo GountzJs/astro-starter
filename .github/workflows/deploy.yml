@@ -6,38 +6,41 @@ on:
       - "v*"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      id-token: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "22.20.0"
-          cache: "pnpm"
           registry-url: "https://registry.npmjs.org"
+
+      - name: Install pnpm
+        run: npm install -g pnpm@10.0.0
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Run tests (opcional)
-        run: pnpm test
-        continue-on-error: true
+      - name: Update package.json version from tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          TAG_VERSION=${GITHUB_REF#refs/tags/v}
+          echo "Updating version to $TAG_VERSION"
+          jq --arg version "$TAG_VERSION" '.version = $version' package.json > package.tmp.json && mv package.tmp.json package.json
+
+      - name: Configure npm auth
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Publish to npm
-        run: pnpm publish --provenance --access public --no-git-checks
+        run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
