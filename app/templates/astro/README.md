@@ -1,4 +1,4 @@
-# Astro Starter: Basics
+# <%= appName %>: Basics
 
 ```sh
 pnpm create astro@latest -- --template basics

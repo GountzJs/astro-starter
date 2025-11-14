@@ -1,10 +1,6 @@
 var Generator = require("yeoman-generator");
 
 module.exports = class extends Generator {
-  constructor(args, opts) {
-    super(args, opts);
-  }
-
   async prompting() {
     this.answers = await this.prompt([
       {
@@ -26,13 +22,27 @@ module.exports = class extends Generator {
 
   writing() {
     this.log("🤖 Starting to generate the project...");
-    this.fs.copyTpl(
-      this.templatePath("**/*"),
+
+    this.fs.copy(
+      this.templatePath("./astro/**"),
       this.destinationPath(this.answers.appName),
       {
-        appName: this.answers.appName,
+        globOptions: { dot: true },
       }
     );
+
+    this.fs.copyTpl(
+      this.templatePath("./astro/package.json"),
+      this.destinationPath(`${this.answers.appName}/package.json`),
+      this.answers
+    );
+
+    this.fs.copyTpl(
+      this.templatePath("./astro/README.md"),
+      this.destinationPath(`${this.answers.appName}/README.md`),
+      this.answers
+    );
+
     this.log("🤖 Project generated");
   }
 
