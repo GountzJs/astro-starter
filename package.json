@@ -2,6 +2,10 @@
   "name": "generator-astro-starter",
   "version": "0.1.0",
   "description": "",
+  "engines": {
+    "node": ">=23.6.1",
+    "pnpm": ">=10.0.0"
+  },
   "files": [
     "app"
   ],
