@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "description": "A scaffold for Astro projects",
   "main": "app/index.js",
-  "engines": {
-    "node": ">=22.20.0",
-    "pnpm": ">=10.0.0"
-  },
   "files": [
     "app"
   ],
