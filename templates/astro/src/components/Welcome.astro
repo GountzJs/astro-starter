@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+import astroLogo from "../assets/astro.svg";
+import eslintLogo from "../assets/eslint.svg";
+import avatar from "../assets/gountz.png";
+import prettierLogo from "../assets/prettier.svg";
+import tailwindLogo from "../assets/tailwind.svg";
+
+const stack = [
+  { name: "Astro", logo: astroLogo, width: 60, height: 60 },
+  { name: "Tailwind", logo: tailwindLogo, width: 80, height: 80 },
+  { name: "ESLint", logo: eslintLogo, width: 60, height: 60 },
+  { name: "Prettier", logo: prettierLogo, width: 60, height: 60 },
+];
+---
+
+<div
+  class="flex flex-1 flex-col gap-4 justify-center items-center h-full w-full"
+>
+  <div class="bg-white rounded-full overflow-hidden border-8 border-red-600">
+    <Image
+      alt="Avatar GountzJs"
+      src={avatar}
+      width="200"
+      height="200"
+      loading="eager"
+      decoding="sync"
+      class="rounded-full"
+    />
+  </div>
+  <h1 class="font-extrabold text-6xl mt-6">Astro Starter Kit</h1>
+  <p class="text-xl mt-6 text-gray-300">
+    Base configuration ready. Stop configuring, start coding.
+  </p>
+  <h2 class="font-bold text-4xl mt-6">🚀 Stack 🚀</h2>
+  <ul class="flex gap-6 items-center flex-wrap">
+    {
+      stack.map((item) => (
+        <li>
+          <Image
+            src={item.logo}
+            alt={item.name}
+            width={item.width}
+            height={item.height}
+            loading="eager"
+            decoding="sync"
+          />
+        </li>
+      ))
+    }
+  </ul>
+</div>
